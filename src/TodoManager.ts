@@ -1,4 +1,5 @@
 import type { Todo } from "./types";
+import { randomUUID } from "crypto";
 import path from "path";
 import fs from "fs";
 
@@ -36,9 +37,9 @@ export class TodoManager {
         );
     }
 
-    add(text: string): number{
+    add(text: string): string{
         const todo: Todo = {
-            id: Date.now(),
+            id: randomUUID(),
             text: text,
             complete: false
         };
@@ -47,7 +48,7 @@ export class TodoManager {
         return todo.id;
     }
 
-    complete(id: number): void {
+    complete(id: string): void {
         const todo = this.todos.find(t => t.id == id);
 
         if (!todo) {
@@ -60,7 +61,7 @@ export class TodoManager {
         this.saveTodos();
     }
 
-    delete(id: number): void {
+    delete(id: string): void {
         const beforeLength = this.todos.length;
 
         this.todos = this.todos.filter(t => t.id !== id);
