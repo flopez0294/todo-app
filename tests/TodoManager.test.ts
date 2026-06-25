@@ -58,7 +58,7 @@ describe("TodoManager", () => {
     it("should not change anything when completing a non-existent todo", () => {
         manager.add("Existing Todo");
 
-        manager.complete(999999);
+        manager.complete("999999");
 
         const todos = manager.list();
 
@@ -69,7 +69,7 @@ describe("TodoManager", () => {
     it("should not delete anything when id does not exist", () => {
         manager.add("Existing Todo");
 
-        manager.delete(999999);
+        manager.delete("999999");
 
         const todos = manager.list();
 
