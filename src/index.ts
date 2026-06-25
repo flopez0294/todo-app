@@ -34,7 +34,7 @@ const commands: Record<string, (args: string[]) => void> = {
     },
 
     complete: (args) => {
-        const id = Number(args[0]);
+        const id = args[0];
 
         if (!id) {
             console.warn("⚠️ Please provide a valid todo id");
@@ -45,7 +45,7 @@ const commands: Record<string, (args: string[]) => void> = {
     },
 
     delete: (args) => {
-        const id = Number(args[0]);
+        const id = args[0];
 
         if (!id) {
             console.warn("⚠️ Please provide a valid todo id");
