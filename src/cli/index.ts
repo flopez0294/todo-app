@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { TodoManager } from "./TodoManager";
+import { TodoManager } from "../core/TodoManager";
 
 const manager = new TodoManager();
 

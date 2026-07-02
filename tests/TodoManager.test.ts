@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, } from "vitest";
-import { TodoManager } from "../src/TodoManager";
+import { TodoManager } from "../src/core/TodoManager";
 
 describe("TodoManager", () => {
     let manager: TodoManager;

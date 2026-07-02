@@ -5,7 +5,7 @@ import fs from "fs";
 
 export class TodoManager {
     private todos: Todo[] = [];
-    private readonly FILE_PATH = path.resolve(__dirname, "..", "todos.json");
+    private readonly FILE_PATH = path.resolve(process.cwd(), "todos.json");
 
     constructor() {
         this.todos = this.loadTodos();
