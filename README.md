@@ -34,11 +34,10 @@ It focuses on clean architecture and is intentionally structured so it can later
 - [x] Persistent JSON storage
 - [ ] Due dates
 - [ ] Priorities
-- [ ] Desktop app (Electron/Tauri)
+- [x] Desktop app (Electron)
 
 ## Future Plans
 
-- [ ] Desktop app (Electron/Tauri)
 - [ ] Cloud sync
 
 ---
@@ -53,6 +52,7 @@ npm install
 
 ### Development
 
+#### CLI
 ```bash
 npm run dev add "Buy milk"
 npm run dev list
@@ -60,10 +60,16 @@ npm run dev complete <id>
 npm run dev delete <id>
 ```
 
+#### GUI
+```bash
+npm run dev
+```
+
 ### Build
 
+#### CLI
 ```bash
-npm run build
+npm run build:cli
 
 # to use the built version
 todo add "Something"

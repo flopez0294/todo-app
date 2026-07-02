@@ -7,14 +7,14 @@ on:
     branches: [main]
 
 jobs:
-  test:
+  build-test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out the code
+      - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -23,8 +23,26 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run type check
-        run: npx tsc --noEmit
+      # -------------------------
+      # LINTING
+      # -------------------------
+      - name: Run ESLint
+        run: npm run lint
 
+      # -------------------------
+      # TYPE CHECK (core/cli only)
+      # -------------------------
+      - name: Type check CLI + Core
+        run: npx tsc --noEmit -p tsconfig.cli.json
+
+      # -------------------------
+      # TESTS
+      # -------------------------
       - name: Run tests
         run: npm test
+
+      # -------------------------
+      # BUILD CHECK (renderer)
+      # -------------------------
+      - name: Build renderer (Vite)
+        run: npm run build

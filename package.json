@@ -2,16 +2,23 @@
   "name": "typescript_todo",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist-electron/electron/main.js",
   "bin": {
-    "todo": "dist/index.js"
+    "todo": "dist/cli/index.js"
   },
   "scripts": {
-    "dev": "ts-node src/index.ts",
-    "build": "tsc",
-    "start": "node dist/index.js",
+    "dev": "tsc -p tsconfig.electron.json && electron .",
+    "dev:renderer": "vite",
+    "dev:electron": "wait-on tcp:5173 && tsc -p tsconfig.electron.json && electron .",
+    "build": "npm run build:renderer && npm run build:electron",
+    "build:cli": "tsc -p tsconfig.cli.json",
+    "build:renderer": "vite build",
+    "build:electron": "tsc -p tsconfig.electron.json",
+    "start": "electron .",
+    "cli": "node dist/cli/index.js",
     "test": "vitest",
-    "test:run": "vitest run"
+    "test:run": "vitest run",
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "",
@@ -19,8 +26,28 @@
   "type": "commonjs",
   "devDependencies": {
     "@types/node": "^26.0.1",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@typescript-eslint/eslint-plugin": "^8.62.1",
+    "@typescript-eslint/parser": "^8.62.1",
+    "@vitejs/plugin-react": "^6.0.3",
+    "autoprefixer": "^10.5.2",
+    "concurrently": "^9.2.3",
+    "electron": "^41.9.2",
+    "electronmon": "^2.0.4",
+    "eslint": "^10.6.0",
+    "postcss": "^8.5.16",
+    "tailwindcss": "^4.3.2",
+    "tree-kill": "^1.2.2",
     "ts-node": "^10.9.2",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.9"
+    "vite": "^8.1.0",
+    "vitest": "^4.1.9",
+    "wait-on": "^9.0.10"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.2",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
   }
 }
