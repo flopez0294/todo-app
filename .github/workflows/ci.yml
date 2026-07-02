@@ -24,7 +24,7 @@ jobs:
         run: npm ci
 
       - name: Run type check
-        run: npx tsc --noEmit
+        run: npx tsc --noEmit -p tsconfig.cli.json
 
       - name: Run tests
         run: npm test
